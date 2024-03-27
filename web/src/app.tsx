@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 const queryClient = new QueryClient();
 
 const App: FC = () => {
-	return <div>Hello world</div>;
+	return <div>Hello world again</div>;
 };
 
 createRoot(document.getElementById('root')!).render(<App />);
