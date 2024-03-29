@@ -1,15 +1,33 @@
+import '~/index.css';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { type FC } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
+import { Route, Switch } from 'wouter';
+
+import { HomePage } from '~/pages/home';
+import { MenPage } from '~/pages/men';
+import { WomenPage } from '~/pages/women';
+import { ModelCarsPage } from '~/pages/model-cars';
+import { SearchPage } from '~/pages/search';
+import { ProfilePage } from '~/pages/profile';
+import { CartPage } from '~/pages/cart';
 
 const queryClient = new QueryClient();
 
 const App: FC = () => {
 	return (
-		<h1 className='text-xl font-bold underline text-purple-500'>
-			Hello world again
-		</h1>
+		<QueryClientProvider client={queryClient}>
+			<Switch>
+				<Route path='/' component={HomePage} />
+				<Route path='/men' component={MenPage} />
+				<Route path='/women' component={WomenPage} />
+				<Route path='/model-cars' component={ModelCarsPage} />
+				<Route path='/search' component={SearchPage} />
+				<Route path='/profile' component={ProfilePage} />
+				<Route path='/cart' component={CartPage} />
+			</Switch>
+		</QueryClientProvider>
 	);
 };
 
