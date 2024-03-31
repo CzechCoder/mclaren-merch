@@ -12,6 +12,7 @@ import { ModelCarsPage } from '~/pages/model-cars';
 import { SearchPage } from '~/pages/search';
 import { ProfilePage } from '~/pages/profile';
 import { CartPage } from '~/pages/cart';
+import { ProductPage } from './pages/products';
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App: FC = () => {
 				<Route path='/search' component={SearchPage} />
 				<Route path='/profile' component={ProfilePage} />
 				<Route path='/cart' component={CartPage} />
+				<Route path='/products/:id' component={ProductPage} />
 			</Switch>
 		</QueryClientProvider>
 	);

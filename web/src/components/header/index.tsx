@@ -51,17 +51,18 @@ export const Header: FC = () => {
 							<div className='text-sm text-gray-600'>USD</div>
 							<div className='flex gap-6'>
 								{iconButtons.map((button) => (
-									<div>
-										<Link href={button.link} key={button.link}>
-											<button.icon size={18} className='cursor-pointer' />
-										</Link>
-									</div>
+									<Link href={button.link} key={button.link}>
+										<button.icon size={18} className='cursor-pointer' />
+									</Link>
 								))}
 							</div>
 						</div>
 						<div className='flex gap-6 align-middle'>
 							{categories.map((category, i) => (
-								<span className='flex text-sm hover:text-orange-600'>
+								<span
+									className='flex text-sm hover:text-orange-600'
+									key={category.link}
+								>
 									<Link href={category.link}>{category.name}</Link>
 								</span>
 							))}

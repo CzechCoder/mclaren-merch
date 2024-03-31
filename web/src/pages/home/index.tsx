@@ -1,17 +1,13 @@
+import { type FC } from 'react';
 import { Header } from '~/components/header';
+import { Row } from '~/components/row';
 
-export const HomePage = () => {
+export const HomePage: FC = () => {
 	return (
 		<div>
 			<Header />
-			<h1 className='text-xl font-bold underline text-purple-500'>
-				Welcome to the shop
-			</h1>
-			<div className='h-96 border-2'>Shop</div>
-			<div className='h-96 border-2'>Shop</div>
-			<div className='h-96 border-2'>Shop</div>
-			<div className='h-96 border-2'>Shop</div>
-			<div className='h-96 border-2'>Shop</div>
+			<Row title='New arrivals' category='new' />
+			<Row title='Bestsellers' category='bestsellers' />
 		</div>
 	);
 };
