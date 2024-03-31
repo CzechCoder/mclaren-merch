@@ -2,7 +2,7 @@ import Router from 'express-promise-router';
 
 import { db } from '~/db';
 
-const productsData = [
+const productsData = () => [
 	{
 		id: 1,
 		img: '01.jpg',
@@ -53,9 +53,9 @@ customerRouter.get('/products', async (req, res) => {
 	const category = req.query.category;
 	let result;
 	if (category === 'new') {
-		result = productsData.slice(0, 6);
+		result = productsData().slice(0, 6);
 	} else if (category === 'bestsellers') {
-		result = productsData.reverse();
+		result = productsData().reverse();
 	}
 	res.json(result);
 });
