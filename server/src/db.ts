@@ -5,7 +5,7 @@ const dialect = new PostgresDialect({
 	pool: new Pool({
 		connectionString:
 			process.env.POSTGRES_URL ??
-			'postgres://postgres:postgres@localhost:5432/postgres',
+			'postgres://postgres:Elephant12@localhost:5432/mclaren_merch',
 	}),
 });
 
@@ -14,11 +14,37 @@ export const db = new Kysely<Database>({
 });
 
 interface Database {
-	order: Order;
+	category: Category;
+	product: Product;
+	product_variant: ProductVariant;
 }
 
-interface Order {
+interface Category {
 	id: Generated<bigint>;
-	customer_id: string;
-	created: ColumnType<Date, string, string>;
+	name: string;
+	description: string;
+}
+
+interface Product {
+	id: Generated<bigint>;
+	img: string;
+	name: string;
+	category: bigint;
+	description: string;
+	details: string;
+	cost: number;
+}
+
+interface ProductVariant {
+	id: Generated<bigint>;
+	product_id: bigint;
+	name: string;
+	img: string;
+	units: number;
+	data: VariantData;
+}
+
+interface VariantData {
+	color: string;
+	size: string;
 }
