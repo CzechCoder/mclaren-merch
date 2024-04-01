@@ -1,5 +1,5 @@
-import { FaPlus } from 'react-icons/fa6';
 import { AccordionItem as Item } from '@szhsin/react-accordion';
+import { FaPlus } from 'react-icons/fa6';
 
 export const AccordionItem = ({ header, ...rest }) => (
 	<Item

@@ -1,14 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'wouter';
-import { getProduct } from '~/api';
-import { Header } from '~/components/header';
-import { Product } from '~/components/product-card';
 import { FaMinus, FaPlus, FaXTwitter } from 'react-icons/fa6';
 import { FaFacebook, FaPinterest } from 'react-icons/fa';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'wouter';
 import { useState } from 'react';
-import { Accordion } from '@szhsin/react-accordion';
-import { Spinner } from '~/components/spinner';
+
 import { AccordionItem } from '~/components/accordion-item';
+import { Accordion } from '@szhsin/react-accordion';
+import { Product } from '~/components/product-card';
+import { Spinner } from '~/components/spinner';
+import { Header } from '~/components/header';
+import { getProduct } from '~/api';
+import { Footer } from '~/components/footer';
 
 export const ProductPage = () => {
 	const { id } = useParams();
@@ -134,6 +136,7 @@ export const ProductPage = () => {
 					</div>
 				)}
 			</div>
+			<Footer />
 		</div>
 	);
 };
