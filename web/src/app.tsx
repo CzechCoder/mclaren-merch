@@ -12,7 +12,7 @@ import { ModelCarsPage } from '~/pages/model-cars';
 import { SearchPage } from '~/pages/search';
 import { ProfilePage } from '~/pages/profile';
 import { CartPage } from '~/pages/cart';
-import { ProductPage } from './pages/products';
+import { ProductPage } from './pages/product';
 
 const queryClient = new QueryClient();
 

@@ -10,3 +10,12 @@ export const getProducts = async (category) => {
 	});
 	return data;
 };
+
+export const getProduct = async (product_id) => {
+	const { data } = await client.get('/api/customer/product', {
+		params: {
+			product_id: product_id,
+		},
+	});
+	return data;
+};

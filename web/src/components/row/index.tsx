@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { type FC } from 'react';
 import { getProducts } from '~/api';
-import { Spinner } from '../loader';
+import { Spinner } from '../spinner';
 import { Product, ProductCard } from '../product-card';
 
 interface RowProps {
