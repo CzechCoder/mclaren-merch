@@ -9,9 +9,14 @@ customerRouter.get('/products', async (req, res) => {
 	const category = req.query.category;
 	let result;
 	if (category === 'new') {
-		result = productsData().slice(0, 6);
+		result = await db.selectFrom('product').selectAll().limit(6).execute();
 	} else if (category === 'bestsellers') {
-		result = productsData().reverse();
+		result = await db
+			.selectFrom('product')
+			.selectAll()
+			.orderBy('id desc')
+			.limit(6)
+			.execute();
 	}
 	res.json(result);
 });
