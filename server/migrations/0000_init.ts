@@ -13,12 +13,13 @@ export async function up(db: Kysely<any>): Promise<void> {
 		.addColumn('id', 'bigserial', (col) => col.primaryKey())
 		.addColumn('img', 'text', (col) => col.notNull())
 		.addColumn('name', 'text', (col) => col.notNull())
-		.addColumn('category', 'bigint', (col) =>
+		.addColumn('category_id', 'bigint', (col) =>
 			col.notNull().references('category.id').onDelete('restrict'),
 		)
 		.addColumn('description', 'text', (col) => col.notNull())
 		.addColumn('details', 'text', (col) => col.notNull())
-		.addColumn('cost', 'text', (col) => col.notNull())
+		.addColumn('cost', 'integer', (col) => col.notNull())
+		.addColumn('slug', 'text', (col) => col.notNull())
 		.execute();
 
 	await db.schema
@@ -31,6 +32,7 @@ export async function up(db: Kysely<any>): Promise<void> {
 		.addColumn('img', 'text', (col) => col.notNull())
 		.addColumn('units', 'integer', (col) => col.notNull())
 		.addColumn('data', 'jsonb', (col) => col.notNull())
+		.addColumn('slug', 'text', (col) => col.notNull())
 		.execute();
 }
 

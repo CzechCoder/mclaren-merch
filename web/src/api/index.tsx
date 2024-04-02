@@ -2,12 +2,8 @@ import axios from 'axios';
 
 const client = axios.create();
 
-export const getProduct = async (product_id) => {
-	const { data } = await client.get('/api/customer/product', {
-		params: {
-			product_id: product_id,
-		},
-	});
+export const getProduct = async (product_slug) => {
+	const { data } = await client.get(`/api/customer/products/${product_slug}`);
 	return data;
 };
 

@@ -1,11 +1,11 @@
-import {
-	type Product,
-	HomePageProductCard,
-	CategoryProductCard,
-} from '../product-card';
 import { useQuery } from '@tanstack/react-query';
 import { type FC } from 'react';
 
+import {
+	HomePageProductCard,
+	CategoryProductCard,
+} from '~/components/product-card';
+import { type Product } from '~/types/products';
 import { Spinner } from '~/components/spinner';
 import { getProductsThumbnails } from '~/api';
 

@@ -29,10 +29,11 @@ interface Product {
 	id: Generated<bigint>;
 	img: string;
 	name: string;
-	category: bigint;
+	category_id: bigint;
 	description: string;
 	details: string;
 	cost: number;
+	slug: string;
 }
 
 interface ProductVariant {
@@ -41,7 +42,8 @@ interface ProductVariant {
 	name: string;
 	img: string;
 	units: number;
-	data: VariantData;
+	slug: string;
+	data?: VariantData;
 }
 
 interface VariantData {

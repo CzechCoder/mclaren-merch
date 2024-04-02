@@ -1,7 +1,7 @@
 import { type FC } from 'react';
-import { Footer } from '~/components/footer';
 
 import { Header } from '~/components/header';
+import { Footer } from '~/components/footer';
 import { HomePageRow } from '~/components/row';
 
 export const HomePage: FC = () => {

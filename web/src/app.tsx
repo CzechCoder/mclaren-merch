@@ -1,9 +1,9 @@
 import '~/index.css';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { type FC } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Route, Switch } from 'wouter';
+import { type FC } from 'react';
 
 import { HomePage } from '~/pages/home';
 import { MenPage } from '~/pages/men';
@@ -27,7 +27,11 @@ const App: FC = () => {
 				<Route path='/search' component={SearchPage} />
 				<Route path='/profile' component={ProfilePage} />
 				<Route path='/cart' component={CartPage} />
-				<Route path='/products/:id' component={ProductPage} />
+				<Route path='/products/:product_slug' component={ProductPage} />
+				<Route
+					path='/products/:product_slug/:variant_slug'
+					component={ProductPage}
+				/>
 			</Switch>
 		</QueryClientProvider>
 	);
