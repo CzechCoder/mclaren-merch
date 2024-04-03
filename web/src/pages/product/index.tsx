@@ -1,16 +1,14 @@
-import { FaMinus, FaPlus, FaXTwitter } from 'react-icons/fa6';
-import { FaFacebook, FaPinterest } from 'react-icons/fa';
+import { FaMinus, FaPlus } from 'react-icons/fa6';
 import { useQuery } from '@tanstack/react-query';
-import { Accordion } from '@szhsin/react-accordion';
 import { Link, useParams } from 'wouter';
 import { type FC, useState } from 'react';
 
 import { type Product } from '~/types/products';
-import { AccordionItem } from '~/components/accordion-item';
 import { Spinner } from '~/components/spinner';
 import { Header } from '~/components/header';
 import { Footer } from '~/components/footer';
 import { getProduct } from '~/api';
+import { ProductAccordion } from '~/components/accordion';
 
 export const ProductPage: FC = () => {
 	const { product_slug, variant_slug } = useParams();
@@ -106,15 +104,17 @@ export const ProductPage: FC = () => {
 	return (
 		<div>
 			<Header />
-			<div className='max-w-screen-xl h-full mx-auto py-10'>
+			<div className='max-w-screen-xl h-full mx-auto py-4 sm:py-10 px-3 sm:px-0'>
 				{product ? (
-					<div className='flex flex-row gap-10 justify-between'>
+					<div className='flex flex-col sm:flex-row gap-10 justify-between'>
 						<div className='flex-[0_0_55%] width-2/5 width-2/5 mx-auto'>
 							<img src={imgLink} />
 						</div>
 
 						<div className='flex-[0_0_50%] basis-2/5 width-2/5 mx-auto'>
-							<h1 className='text-4xl font-medium'>{product.name}</h1>
+							<h1 className='text-2xl sm:text-4xl font-medium'>
+								{product.name}
+							</h1>
 							<h2 className='text-lg mt-1 mb-10 text-gray-700'>
 								${product.cost}
 							</h2>
@@ -157,63 +157,7 @@ export const ProductPage: FC = () => {
 								))}
 							</div>
 							<div className='mb-6 mt-10'>
-								<Accordion
-									transition
-									transitionTimeout={200}
-									className='border-t-[1px]'
-								>
-									<AccordionItem header='DELIVERY'>
-										<p className='mb-4'>
-											Complimentary shipping to EU orders over $200
-										</p>
-										<div className='flex flex-col gap-2'>
-											<div className='flex justify-between'>
-												<span>EU (including VAT)</span>
-												<span>$5</span>
-											</div>
-											<div className='flex justify-between'>
-												<span>UK</span>
-												<span>$10</span>
-											</div>
-											<div className='flex justify-between'>
-												<span>US & Canada</span>
-												<span>$15</span>
-											</div>
-											<div className='flex justify-between'>
-												<span>Rest of the World</span>
-												<span>$20</span>
-											</div>
-										</div>
-									</AccordionItem>
-
-									<AccordionItem header='PRODUCT DETAILS'>
-										<ul className='list-disc pl-4'>
-											{product.details.split('\n').map((detail) => (
-												<li className='py-1' key={detail}>
-													{detail}
-												</li>
-											))}
-										</ul>
-									</AccordionItem>
-
-									<AccordionItem header='SHARE'>
-										<div className='flex gap-10'>
-											<FaFacebook
-												className='text-orange-500 cursor-pointer'
-												size={22}
-											/>
-											<FaXTwitter
-												className='text-orange-500 cursor-pointer'
-												size={22}
-											/>
-											<FaPinterest
-												className='text-orange-500 cursor-pointer'
-												size={22}
-											/>
-										</div>
-									</AccordionItem>
-								</Accordion>
-
+								<ProductAccordion details={product.details} />
 								<div>
 									<p className='my-4'>
 										The McLaren Collection is sold and distributed by Dowlis

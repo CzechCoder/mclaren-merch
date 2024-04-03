@@ -5,7 +5,7 @@ import { type Product } from '~/types/products';
 
 export const HomePageProductCard: FC<Product> = (props) => (
 	<Link
-		className='w-[250px] flex flex-col border p-4 rounded-lg hover:border-gray-400'
+		className='w-[250px] min-w-[250px] sm:min-w-0 flex flex-col border p-4 rounded-lg hover:border-gray-400'
 		href={`/products/${props.slug}`}
 	>
 		<img alt='' src={props.img} className='my-5' />

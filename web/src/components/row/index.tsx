@@ -22,8 +22,8 @@ export const HomePageRow: FC<RowProps> = ({ title, category }) => {
 
 	return (
 		<div className='max-w-screen-xl h-full mx-auto py-5'>
-			<h2 className='font-medium text-2xl my-6'>{title}</h2>
-			<div className='flex flex-row gap-2'>
+			<h2 className='font-medium text-2xl my-6 px-3 sm:px-0'>{title}</h2>
+			<div className='flex flex-row gap-2 overflow-hidden overflow-x-scroll px-2 sm:px-0'>
 				{products ? (
 					products.map((product) => (
 						<HomePageProductCard {...product} key={product.name} />
@@ -43,7 +43,7 @@ export const CategoryRow: FC<RowProps> = ({ title, category }) => {
 	});
 
 	return (
-		<div className='max-w-screen-xl h-full mx-auto py-5'>
+		<div className='max-w-screen-xl h-full mx-auto py-5 overflow-hidden'>
 			<h2 className='font-medium text-2xl my-6'>{title}</h2>
 			<div className='flex flex-row gap-2'>
 				{products ? (
