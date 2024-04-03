@@ -8,7 +8,7 @@ import { type FC } from 'react';
 import { HomePage } from '~/pages/home';
 import { MenPage } from '~/pages/men';
 import { WomenPage } from '~/pages/women';
-import { ModelCarsPage } from '~/pages/model-cars';
+import { ToysPage } from '~/pages/toys';
 import { SearchPage } from '~/pages/search';
 import { ProfilePage } from '~/pages/profile';
 import { CartPage } from '~/pages/cart';
@@ -23,7 +23,7 @@ const App: FC = () => {
 				<Route path='/' component={HomePage} />
 				<Route path='/men' component={MenPage} />
 				<Route path='/women' component={WomenPage} />
-				<Route path='/model-cars' component={ModelCarsPage} />
+				<Route path='/toys' component={ToysPage} />
 				<Route path='/search' component={SearchPage} />
 				<Route path='/profile' component={ProfilePage} />
 				<Route path='/cart' component={CartPage} />

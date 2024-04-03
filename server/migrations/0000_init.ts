@@ -13,6 +13,7 @@ export async function up(db: Kysely<any>): Promise<void> {
 		.addColumn('id', 'bigserial', (col) => col.primaryKey())
 		.addColumn('img', 'text', (col) => col.notNull())
 		.addColumn('name', 'text', (col) => col.notNull())
+		.addColumn('apparel', 'boolean', (col) => col.notNull().defaultTo('false'))
 		.addColumn('category_id', 'bigint', (col) =>
 			col.notNull().references('category.id').onDelete('restrict'),
 		)

@@ -5,7 +5,6 @@
 	},
 	"dependencies": {
 		"@szhsin/react-accordion": "^1.2.3",
-		"@tabler/icons-react": "^2.46.0",
 		"@tanstack/react-query": "^5.17.19",
 		"axios": "^1.6.7",
 		"react": "^18.2.0",

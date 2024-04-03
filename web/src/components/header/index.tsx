@@ -1,22 +1,20 @@
-import {
-	IconSearch,
-	IconUserCircle,
-	IconShoppingBag,
-} from '@tabler/icons-react';
+import { IoMdSearch } from 'react-icons/io';
+import { CgProfile } from 'react-icons/cg';
+import { BiShoppingBag } from 'react-icons/bi';
 import { type FC } from 'react';
 import { Link } from 'wouter';
 
 const iconButtons = [
 	{
-		icon: IconSearch,
+		icon: IoMdSearch,
 		link: '/search',
 	},
 	{
-		icon: IconUserCircle,
+		icon: CgProfile,
 		link: '/profile',
 	},
 	{
-		icon: IconShoppingBag,
+		icon: BiShoppingBag,
 		link: '/cart',
 	},
 ];
@@ -31,8 +29,8 @@ const categories = [
 		link: '/women',
 	},
 	{
-		name: 'MODEL CARS',
-		link: '/model-cars',
+		name: 'TOYS',
+		link: '/toys',
 	},
 ];
 

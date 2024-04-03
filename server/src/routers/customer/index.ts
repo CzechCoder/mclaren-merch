@@ -31,6 +31,7 @@ customerRouter.get('/products/:product_id', async (req, res) => {
 			'product.details',
 			'product.id',
 			'product.name',
+			'product.apparel',
 			'product.slug',
 		])
 		.where('slug', '=', product_slug)

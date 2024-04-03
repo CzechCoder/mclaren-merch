@@ -16,6 +16,7 @@ async function createSeed() {
 			{
 				img: 'http://tomasburian.com/dev/cdn/mclaren/220x220/mens_polo.jpg',
 				name: 'Mens Performance Polo Shirt',
+				apparel: true,
 				category_id: BigInt(1),
 				description:
 					"Our lightweight Men's McLaren Short Sleeve Performance Polo Shirt is technically engineered with mesh panelling, frontal zip mechanism, and reflective modifications to push you to perform at your best under pressure - even in low-level visibility.\nThe Polo Shirt features a sleek pointed collar and concealed placket fastening for a smart look. The mesh panel at the back and underarm ventilation ensure a fresh feel for optimal comfort during tense races.",
@@ -26,6 +27,7 @@ async function createSeed() {
 			{
 				img: 'http://tomasburian.com/dev/cdn/mclaren/220x220/mens_tshirt.jpg',
 				name: 'Mens Born To Race T-Shirt',
+				apparel: true,
 				category_id: BigInt(1),
 				description:
 					"Get Grand Prix-ready in our Men's McLaren Short Sleeve Born To Race T Shirt, available in a bold Papaya and Plum Perfect, colourways to sync with the season. The classic speedmark logo and our rotating 'Born To Race' back print ensures you can showcase the heritage and forward motion of the McLaren F1 racing team.",
@@ -37,6 +39,7 @@ async function createSeed() {
 			{
 				img: 'http://tomasburian.com/dev/cdn/mclaren/220x220/womens_polo.jpg',
 				name: 'Womens Official Teamwear Polo Shirt Neom McLaren Extreme E',
+				apparel: true,
 				category_id: BigInt(2),
 				description:
 					"Designed in a classic fit, this Women's Neom McLaren Extreme E Official Teamwear Polo Shirt is seamlessly tailored for a polished look. Stay comfortable while cheering on your favourite team with heat-sealed laser-cut holes strategically positioned below the arms to ensure superior breathability.",
@@ -48,6 +51,7 @@ async function createSeed() {
 			{
 				img: 'http://tomasburian.com/dev/cdn/mclaren/220x220/womens_tshirt.jpg',
 				name: 'Womens Core Essentials T-Shirt',
+				apparel: true,
 				category_id: BigInt(2),
 				description:
 					"Celebrate your team with the Women's McLaren Core Essentials T-Shirt. Made from lightweight, breathable cotton fabric, this is a classic fit T-Shirt for McLaren fans. Complete with set-in short sleeves and a crew neckline with contrast tipping.",
@@ -98,14 +102,14 @@ async function createSeed() {
 				data: { color: '#595959', color_name: 'black', size: 'M' },
 				slug: 'black-m',
 			},
-			{
-				product_id: BigInt(1),
-				name: 'Black - L',
-				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/mens_polo_black.jpg',
-				units: 0,
-				data: { color: '#595959', color_name: 'black', size: 'L' },
-				slug: 'black-l',
-			},
+			// {
+			// 	product_id: BigInt(1),
+			// 	name: 'Black - L',
+			// 	img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/mens_polo_black.jpg',
+			// 	units: 0,
+			// 	data: { color: '#595959', color_name: 'black', size: 'L' },
+			// 	slug: 'black-l',
+			// },
 			{
 				product_id: BigInt(1),
 				name: 'Red - S',
@@ -129,6 +133,70 @@ async function createSeed() {
 				units: 25,
 				data: { color: '#502b33', color_name: 'red', size: 'L' },
 				slug: 'red-l',
+			},
+			{
+				product_id: BigInt(2),
+				name: 'Orange - S',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/mens_tshirt_orange.jpg',
+				units: 35,
+				data: { color: '#ff8000', color_name: 'orange', size: 'S' },
+				slug: 'orange-s',
+			},
+			{
+				product_id: BigInt(2),
+				name: 'Red - S',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/mens_tshirt_red.jpg',
+				units: 35,
+				data: { color: '#714657', color_name: 'red', size: 'S' },
+				slug: 'red-s',
+			},
+			{
+				product_id: BigInt(2),
+				name: 'Red - M',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/mens_tshirt_red.jpg',
+				units: 15,
+				data: { color: '#714657', color_name: 'red', size: 'M' },
+				slug: 'red-m',
+			},
+			{
+				product_id: BigInt(3),
+				name: 'Black - S',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/womens_polo_black.jpg',
+				units: 5,
+				data: { color: '#444', color_name: 'black', size: 'S' },
+				slug: 'black-s',
+			},
+			{
+				product_id: BigInt(3),
+				name: 'Black - M',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/womens_polo_black.jpg',
+				units: 25,
+				data: { color: '#444', color_name: 'black', size: 'M' },
+				slug: 'black-m',
+			},
+			{
+				product_id: BigInt(4),
+				name: 'Black - S',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/womens_tshirt_black.jpg',
+				units: 13,
+				data: { color: '#000', color_name: 'black', size: 'S' },
+				slug: 'black-s',
+			},
+			{
+				product_id: BigInt(4),
+				name: 'Black - M',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/womens_tshirt_black.jpg',
+				units: 27,
+				data: { color: '#000', color_name: 'black', size: 'M' },
+				slug: 'black-m',
+			},
+			{
+				product_id: BigInt(4),
+				name: 'Orange - S',
+				img: 'http://tomasburian.com/dev/cdn/mclaren/700x700/womens_tshirt_orange.jpg',
+				units: 35,
+				data: { color: '#ff8000', color_name: 'orange', size: 'S' },
+				slug: 'orange-s',
 			},
 			{
 				product_id: BigInt(5),

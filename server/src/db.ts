@@ -29,6 +29,7 @@ interface Product {
 	id: Generated<bigint>;
 	img: string;
 	name: string;
+	apparel: boolean;
 	category_id: bigint;
 	description: string;
 	details: string;
