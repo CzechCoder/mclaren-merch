@@ -9,14 +9,41 @@ customerRouter.get('/products', async (req, res) => {
 	let result;
 	if (category === 'new') {
 		result = await db
+			.with('available_variants', (db) =>
+				db
+					.selectFrom('product_variant')
+					.select('product_id')
+					.where('available', '=', true)
+					.groupBy('product_id'),
+			)
 			.selectFrom('product')
-			.select(['product.img', 'product.name', 'product.price', 'product.slug'])
+			.leftJoin(
+				'available_variants',
+				'available_variants.product_id',
+				'product.id',
+			)
+			.select(['img', 'name', 'price', 'slug'])
+			.where('product_id', 'is not', null)
+			.orderBy('id asc')
 			.limit(6)
 			.execute();
 	} else if (category === 'bestsellers') {
 		result = await db
+			.with('available_variants', (db) =>
+				db
+					.selectFrom('product_variant')
+					.select('product_id')
+					.where('available', '=', true)
+					.groupBy('product_id'),
+			)
 			.selectFrom('product')
-			.selectAll()
+			.leftJoin(
+				'available_variants',
+				'available_variants.product_id',
+				'product.id',
+			)
+			.select(['img', 'name', 'price', 'slug'])
+			.where('product_id', 'is not', null)
 			.orderBy('id desc')
 			.limit(6)
 			.execute();
@@ -49,10 +76,12 @@ customerRouter.get('/products/:product_id', async (req, res) => {
 			'product_variant.img',
 			'product_variant.name',
 			'product_variant.product_id',
+			'product_variant.stock',
 		])
 		.leftJoin('product', 'product.id', 'product_variant.product_id')
 		.where('product_id', '=', productData[0].id)
 		.where('available', '=', true)
+		.orderBy('product_variant.id asc')
 		.execute();
 
 	const result = {

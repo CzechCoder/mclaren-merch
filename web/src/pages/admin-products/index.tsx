@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { AddProductButton } from '~/components-admin/add-product-button';
 import { ProductTab } from '~/components-admin/product-tab';
 import { getAdminProductVariants } from '~/api';
 import Layout from '~/components-admin/layout';
@@ -16,9 +15,8 @@ export const AdminProductsPage = () => {
 			<div className='flex gap-5'>
 				<div className='p-4 w-full'>
 					<div className='w-full m-auto p-4 border rounded-lg bg-white overflow-y-auto'>
-						<div className='w-full flex justify-between'>
+						<div className='w-full flex justify-start'>
 							<div className='text-2xl font-medium'>Products</div>
-							<AddProductButton />
 						</div>
 						<div className='my-3 p-2 grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] sm:grid-cols-5 grid-cols-2 items-center justify-between'>
 							<span>Name</span>

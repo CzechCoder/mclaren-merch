@@ -1,4 +1,4 @@
-# Mclaren Merch Store with admin dashboard
+# McLaren Merch Store with admin dashboard
 
 ## 🟣 Quick start
 
@@ -8,12 +8,16 @@
 
     Use "npm run dev" both in web and server folder to run frontend and backend
 
-    For list of installed packages see .dependencies and .devDependencies in `package.json` .
+    For list of installed packages see dependencies and devDependencies in `package.json` .
 
 2.  **Install your database**
 
     - use migration and seed to set up tables for your own postgres database
     - use seed to populate your database with demo data
+    - you can run "npm run" command on these:
+      - migate - creates the database
+      - seed - populates the database with mock data
+      - resetdb - runs migrate and seed in sequence
 
 3.  **Start using the web**
 

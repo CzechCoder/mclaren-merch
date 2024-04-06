@@ -39,9 +39,16 @@ export const ProductPage: FC = () => {
 	const colors: string[] = Array.from(colorSet);
 	const sizes: string[] = Array.from(sizeSet);
 
-	const imgLink = variant_slug
-		? product?.variants.find((variant) => variant.slug === variant_slug).img
-		: product?.variants[0].img;
+	let imgLink: string;
+	let out_of_stock: boolean;
+
+	if (product && product?.variants.length !== 0) {
+		const current_variant = variant_slug
+			? product?.variants.find((variant) => variant.slug === variant_slug)
+			: product?.variants[0];
+		imgLink = current_variant.img;
+		out_of_stock = current_variant.stock === 0;
+	}
 
 	const sizeOrder = ['S', 'M', 'L'];
 
@@ -112,66 +119,77 @@ export const ProductPage: FC = () => {
 			<div className='max-w-screen-xl h-full mx-auto py-4 sm:py-10 px-3 sm:px-0'>
 				{product ? (
 					<div className='flex flex-col sm:flex-row gap-10 justify-between'>
-						<div className='flex-[0_0_55%] width-2/5 width-2/5 mx-auto'>
-							<img src={imgLink} />
-						</div>
-
-						<div className='flex-[0_0_50%] basis-2/5 width-2/5 mx-auto'>
-							<h1 className='text-2xl sm:text-4xl font-medium'>
-								{product.name}
-							</h1>
-							<h2 className='text-lg mt-1 mb-10 text-gray-700'>
-								${product.price}
-							</h2>
-							{product.apparel && (
-								<div className='mb-10'>
-									<p className='text-gray-500 mb-4'>COLOR</p>
-									<div className='flex flex-row gap-4'>{colorLinks}</div>
-									<p className='text-gray-500 my-4'>SIZE</p>
-									<div className='flex gap-2'>{sortedSizeLinks}</div>
-								</div>
-							)}
-							<div className='flex mb-10'>
-								<div className='flex max-w-[100px] mr-6 border-2 w-full relative'>
-									<span
-										className='absolute h-[20px] min-w-[20px] top-2/4 translate-y-[-50%] left-[10px] cursor-pointer flex justify-center items-center'
-										onClick={decrementItemCount}
-									>
-										<FaMinus />
-									</span>
-									<span className='w-full h-[40px] leading-[40px] text-center text-lg'>
-										{itemCount}
-									</span>
-									<span
-										className='absolute h-[20px] min-w-[20px] top-2/4 translate-y-[-50%] right-[10px] cursor-pointer flex justify-center items-center'
-										onClick={() => setItemCount(itemCount + 1)}
-									>
-										<FaPlus />
-									</span>
+						{product?.variants.length !== 0 ? (
+							<>
+								<div className='flex-[0_0_55%] width-2/5 width-2/5 mx-auto'>
+									<img src={imgLink} />
 								</div>
 
-								<button className='font-bold flex-1 bg-orange-400 min-w-[initial] h-11 px-4 text-white'>
-									ADD TO BASKET
-								</button>
-							</div>
-							<div>
-								{product.description.split('\n').map((text) => (
-									<p className='my-4' key={text}>
-										{text}
-									</p>
-								))}
-							</div>
-							<div className='mb-6 mt-10'>
-								<ProductAccordion details={product.details} />
-								<div>
-									<p className='my-4'>
-										The McLaren Collection is sold and distributed by Dowlis
-										Inspired Branding Ltd.
-									</p>
-									<p className='my-4'>Need help with your order? Contact us</p>
+								<div className='flex-[0_0_50%] basis-2/5 width-2/5 mx-auto'>
+									<h1 className='text-2xl sm:text-4xl font-medium'>
+										{product.name}
+									</h1>
+									<h2 className='text-lg mt-1 mb-10 text-gray-700'>
+										${product.price}
+									</h2>
+									{product.apparel && (
+										<div className='mb-10'>
+											<p className='text-gray-500 mb-4'>COLOR</p>
+											<div className='flex flex-row gap-4'>{colorLinks}</div>
+											<p className='text-gray-500 my-4'>SIZE</p>
+											<div className='flex gap-2'>{sortedSizeLinks}</div>
+										</div>
+									)}
+									<div className='flex mb-10'>
+										<div className='flex max-w-[100px] mr-6 border-2 w-full relative'>
+											<span
+												className='absolute h-[20px] min-w-[20px] top-2/4 translate-y-[-50%] left-[10px] cursor-pointer flex justify-center items-center'
+												onClick={decrementItemCount}
+											>
+												<FaMinus />
+											</span>
+											<span className='w-full h-[40px] leading-[40px] text-center text-lg'>
+												{itemCount}
+											</span>
+											<span
+												className='absolute h-[20px] min-w-[20px] top-2/4 translate-y-[-50%] right-[10px] cursor-pointer flex justify-center items-center'
+												onClick={() => setItemCount(itemCount + 1)}
+											>
+												<FaPlus />
+											</span>
+										</div>
+
+										<button
+											disabled={out_of_stock}
+											className={`font-bold flex-1 ${out_of_stock ? 'bg-gray-500' : 'bg-orange-400 min-w-[initial]'} h-11 px-4 text-white`}
+										>
+											{out_of_stock ? 'OUT OF STOCK' : 'ADD TO BASKET'}
+										</button>
+									</div>
+									<div>
+										{product.description.split('\n').map((text) => (
+											<p className='my-4' key={text}>
+												{text}
+											</p>
+										))}
+									</div>
+									<div className='mb-6 mt-10'>
+										<ProductAccordion details={product.details} />
+										<div>
+											<p className='my-4'>
+												The McLaren Collection is sold and distributed by Dowlis
+												Inspired Branding Ltd.
+											</p>
+											<p className='my-4'>
+												Need help with your order? Contact us
+											</p>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
+							</>
+						) : (
+							<div>This product is not available</div>
+						)}
 					</div>
 				) : (
 					<div>

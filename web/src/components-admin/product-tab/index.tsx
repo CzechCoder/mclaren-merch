@@ -4,10 +4,6 @@ import { CiCircleCheck } from 'react-icons/ci';
 import dayjs from 'dayjs';
 
 export const ProductTab = ({ product }: { product: ProductWithVariants }) => {
-	const deleteProduct = (product_id, variant_name) => {
-		console.log('product id: ' + product_id + ' variant name: ' + variant_name);
-	};
-
 	return (
 		<li className='bg-gray-100 hover:bg-gray-200 auto-cols-min rounded-lg my-3 p-2 grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] sm:grid-cols-5 grid-cols-2 items-center justify-between'>
 			<div className='flex items-center pr-5'>
@@ -30,17 +26,7 @@ export const ProductTab = ({ product }: { product: ProductWithVariants }) => {
 					/>
 				)}
 			</p>
-			<div className='sm:flex hidden justify-between items-center'>
-				<p>{dayjs(product.last_updated).format('MMM D, YYYY h:mm A')}</p>
-				<button
-					onClick={() =>
-						deleteProduct(product.product_id, product.variant_name)
-					}
-					className='p-2 bg-red-500 rounded-md text-white'
-				>
-					<MdDeleteOutline />
-				</button>
-			</div>
+			<p>{dayjs(product.last_updated).format('MMM D, YYYY h:mm A')}</p>
 		</li>
 	);
 };
