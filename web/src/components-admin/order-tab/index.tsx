@@ -15,9 +15,7 @@ const fulfillment_status_table = {
 export const OrderTab = ({ order }: { order: Order }) => {
 	return (
 		<li className='bg-gray-100 hover:bg-gray-200 auto-cols-min rounded-lg my-3 p-2 grid md:grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr] sm:grid-cols-5 grid-cols-2 items-center justify-between'>
-			<div className='flex items-center pr-5'>
-				<p className='pl-4'>#{order.reference}</p>
-			</div>
+			<p className='pl-4'>#{order.reference}</p>
 			<p>{dayjs(order.date).format('MMM D, YYYY h:mm A')}</p>
 			<p className='text-gray-600 sm:text-left text-right'>{order.name}</p>
 			<p className='text-gray-600 sm:text-left text-right'>

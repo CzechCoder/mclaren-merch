@@ -2,6 +2,7 @@ import Router from 'express-promise-router';
 
 import { db } from '~/db';
 import { QueryResult, sql } from 'kysely';
+import { count } from 'console';
 
 export const adminRouter = Router();
 
@@ -62,6 +63,25 @@ adminRouter.get('/orders', async (req, res) => {
 			total_price: total_price,
 		});
 	});
+
+	res.json(result);
+});
+
+adminRouter.get('/customers', async (req, res) => {
+	const result = await db
+		.with('orders_number', (db) =>
+			db
+				.selectFrom('order')
+				.select((eb) => eb.fn.count('reference').as('number_of_orders'))
+				.select('user_id')
+				.groupBy('user_id'),
+		)
+		.selectFrom('user')
+		.leftJoin('orders_number', 'user_id', 'user.id')
+		.where('user.is_admin', '=', false)
+		.select(['id', 'email', 'number_of_orders'])
+		.select(sql`concat(first_name, ' ', last_name)`.as('name'))
+		.execute();
 
 	res.json(result);
 });

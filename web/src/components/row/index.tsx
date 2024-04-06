@@ -5,7 +5,7 @@ import {
 	HomePageProductCard,
 	CategoryProductCard,
 } from '~/components/product-card';
-import { type Product } from '~/types/products';
+import { type Product } from '~/types/product';
 import { Spinner } from '~/components/spinner';
 import { getProductsThumbnails } from '~/api';
 

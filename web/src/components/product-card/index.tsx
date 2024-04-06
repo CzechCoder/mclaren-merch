@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Link } from 'wouter';
 
-import { type Product } from '~/types/products';
+import { type Product } from '~/types/product';
 
 export const HomePageProductCard: FC<Product> = (props) => (
 	<Link

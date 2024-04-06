@@ -24,6 +24,11 @@ export const getAdminProductVariants = async () => {
 };
 
 export const getAdminOrders = async () => {
-	const {data} = await client.get('/api/admin/orders')
+	const { data } = await client.get('/api/admin/orders');
 	return data;
-}
+};
+
+export const getAdminCustomers = async () => {
+	const { data } = await client.get('/api/admin/customers');
+	return data;
+};
