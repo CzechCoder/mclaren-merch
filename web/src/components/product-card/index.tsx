@@ -11,7 +11,7 @@ export const HomePageProductCard: FC<Product> = (props) => (
 		<img alt='' src={props.img} className='my-5' />
 		<div>
 			<h3 className='text-lg pb-4'>{props.name}</h3>
-			<p className='text-md text-gray-500'>${props.cost}</p>
+			<p className='text-md text-gray-500'>${props.price}</p>
 		</div>
 	</Link>
 );
@@ -24,7 +24,7 @@ export const CategoryProductCard: FC<Product> = (props) => (
 		<img alt='' src={props.img} className='my-5' />
 		<div>
 			<h3 className='text-lg py-4'>{props.name}</h3>
-			<p className='text-md text-gray-500'>${props.cost}</p>
+			<p className='text-md text-gray-500'>${props.price}</p>
 		</div>
 	</Link>
 );

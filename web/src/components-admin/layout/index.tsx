@@ -1,5 +1,5 @@
-import { Header } from '~/components/admin-header';
-import { Sidebar } from '~/components/admin-sidebar';
+import { Header } from '~/components-admin/header';
+import { Sidebar } from '~/components-admin/sidebar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
@@ -7,7 +7,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			<Sidebar />
 			<div className='flex flex-col w-full'>
 				<Header />
-				{children}
+				<div className='bg-gray-200 p-3 overflow-y-auto overflow-hidden min-h-[calc(100vh-68px)]'>
+					{children}
+				</div>
 			</div>
 		</div>
 	);

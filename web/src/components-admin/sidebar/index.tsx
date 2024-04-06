@@ -36,7 +36,7 @@ export const Sidebar: FC = () => {
 			</div>
 			<div className='flex flex-col'>
 				{sidebarButtons.map((button) => (
-					<Link href={button.link}>
+					<Link href={button.link} key={button.name}>
 						<div className='w-full text-lg text-gray-300 hover:text-white cursor-pointer hover:bg-gray-500 p-2 flex items-center gap-2'>
 							<button.icon />
 							{button.name}

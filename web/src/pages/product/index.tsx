@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'wouter';
 import { type FC, useState } from 'react';
 
-import { type Product } from '~/types/products';
 import { Spinner } from '~/components/spinner';
 import { Header } from '~/components/header';
 import { Footer } from '~/components/footer';
@@ -43,6 +42,8 @@ export const ProductPage: FC = () => {
 	const imgLink = variant_slug
 		? product?.variants.find((variant) => variant.slug === variant_slug).img
 		: product?.variants[0].img;
+
+	const sizeOrder = ['S', 'M', 'L'];
 
 	const sizeLinks = [];
 	const colorLinks = [];
@@ -101,6 +102,10 @@ export const ProductPage: FC = () => {
 		}
 	}
 
+	const sortedSizeLinks = sizeOrder.map((size) =>
+		sizeLinks.find((element) => element.key === size),
+	);
+
 	return (
 		<div>
 			<Header />
@@ -116,14 +121,14 @@ export const ProductPage: FC = () => {
 								{product.name}
 							</h1>
 							<h2 className='text-lg mt-1 mb-10 text-gray-700'>
-								${product.cost}
+								${product.price}
 							</h2>
 							{product.apparel && (
 								<div className='mb-10'>
 									<p className='text-gray-500 mb-4'>COLOR</p>
 									<div className='flex flex-row gap-4'>{colorLinks}</div>
 									<p className='text-gray-500 my-4'>SIZE</p>
-									<div className='flex gap-2'>{sizeLinks}</div>
+									<div className='flex gap-2'>{sortedSizeLinks}</div>
 								</div>
 							)}
 							<div className='flex mb-10'>

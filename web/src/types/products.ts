@@ -1,4 +1,4 @@
-export interface Product {
+interface Product {
 	id: number;
 	img: string;
 	name: string;
@@ -6,9 +6,9 @@ export interface Product {
 	category_id: number;
 	description: string;
 	details: string;
-	cost: number;
 	slug: string;
 	variants: Variant[];
+	price?: number;
 }
 
 interface Variant {
@@ -16,7 +16,18 @@ interface Variant {
 	product_id: number;
 	name: string;
 	img: string;
-	units: number;
+	price: number;
+	stock: number;
 	slug: string;
 	data: any;
+}
+
+interface ProductWithVariants extends Product {
+	product_id: string;
+	variant_name: string;
+	stock: number;
+	data: any;
+	available: boolean;
+	last_updated: string;
+	name: string;
 }

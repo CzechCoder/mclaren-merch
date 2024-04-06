@@ -8,7 +8,11 @@ customerRouter.get('/products', async (req, res) => {
 	const category = req.query.category;
 	let result;
 	if (category === 'new') {
-		result = await db.selectFrom('product').selectAll().limit(6).execute();
+		result = await db
+			.selectFrom('product')
+			.select(['product.img', 'product.name', 'product.price', 'product.slug'])
+			.limit(6)
+			.execute();
 	} else if (category === 'bestsellers') {
 		result = await db
 			.selectFrom('product')
@@ -26,13 +30,13 @@ customerRouter.get('/products/:product_id', async (req, res) => {
 	const productData = await db
 		.selectFrom('product')
 		.select([
-			'product.cost',
 			'product.description',
 			'product.details',
 			'product.id',
 			'product.name',
 			'product.apparel',
 			'product.slug',
+			'product.price',
 		])
 		.where('slug', '=', product_slug)
 		.execute();
@@ -48,6 +52,7 @@ customerRouter.get('/products/:product_id', async (req, res) => {
 		])
 		.leftJoin('product', 'product.id', 'product_variant.product_id')
 		.where('product_id', '=', productData[0].id)
+		.where('available', '=', true)
 		.execute();
 
 	const result = {
