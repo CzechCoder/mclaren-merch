@@ -2,7 +2,6 @@ import Router from 'express-promise-router';
 
 import { db } from '~/db';
 import { QueryResult, sql } from 'kysely';
-import { count } from 'console';
 
 export const adminRouter = Router();
 
@@ -84,6 +83,59 @@ adminRouter.get('/customers', async (req, res) => {
 		.select(['id', 'email', 'number_of_orders'])
 		.select(sql`concat(first_name, ' ', last_name)`.as('name'))
 		.execute();
+
+	res.json(result);
+});
+
+adminRouter.get('/statistics', async (req, res) => {
+	const number_of_orders = await db
+		.selectFrom('order')
+		.select((eb) => eb.fn.count('id').as('number_of_orders'))
+		.execute();
+
+	const annual_sum = await db
+		.selectFrom('order')
+		.leftJoin('order_line', 'order_line.order_id', 'order.id')
+		.where(
+			sql`EXTRACT(YEAR FROM delivered)`,
+			'=',
+			sql`EXTRACT(YEAR FROM CURRENT_DATE)`,
+		)
+		.select((eb) => eb.fn.sum('price').as('price_sum'))
+		.execute();
+
+	const monthly_sum = await db
+		.selectFrom('order')
+		.leftJoin('order_line', 'order_line.order_id', 'order.id')
+		.where(
+			sql`EXTRACT(MONTH FROM delivered)`,
+			'=',
+			sql`EXTRACT(MONTH FROM CURRENT_DATE)`,
+		)
+		.where(
+			sql`EXTRACT(YEAR FROM delivered)`,
+			'=',
+			sql`EXTRACT(YEAR FROM CURRENT_DATE)`,
+		)
+		.select((eb) => eb.fn.sum('price').as('price_sum'))
+		.execute();
+
+	const result = [
+		{
+			title: "This year's revenue",
+			value: annual_sum[0].price_sum,
+			currency: '$',
+		},
+		{
+			title: "This month's revenue",
+			value: monthly_sum[0].price_sum,
+			currency: '$',
+		},
+		{
+			title: 'Total number of orders',
+			value: number_of_orders[0].number_of_orders,
+		},
+	];
 
 	res.json(result);
 });

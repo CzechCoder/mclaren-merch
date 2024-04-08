@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
+import { type FC } from 'react';
 
 import { getAdminProductVariants } from '~/api';
 import { ProductTab } from '~/components-admin/product-tab';
 import { Layout } from '~/components-admin/layout';
 import { Spinner } from '~/components/spinner';
 
-export const AdminProductsPage = () => {
+export const AdminProductsPage: FC = () => {
 	const { data: products } = useQuery({
 		queryKey: ['getAdminProductVariants'],
 		queryFn: getAdminProductVariants,
@@ -19,18 +20,18 @@ export const AdminProductsPage = () => {
 						<div className='w-full flex justify-start'>
 							<div className='text-2xl font-medium'>Products</div>
 						</div>
-						<div className='my-3 p-2 grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] sm:grid-cols-5 grid-cols-2 items-center justify-between'>
+						<div className='my-3 p-2 grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] items-center justify-between'>
 							<span>Name</span>
 							<span>Variant</span>
-							<span className='hidden md:grid'>Price (USD)</span>
-							<span className='sm:text-left text-right'>Stock</span>
-							<span className='hidden md:grid'>Available</span>
-							<span className='hidden md:grid'>Last updated</span>
+							<span className='grid'>Price (USD)</span>
+							<span className='text-left'>Stock</span>
+							<span className='grid'>Available</span>
+							<span className='grid'>Last updated</span>
 						</div>
 						{products ? (
 							<ul>
 								{products?.map((product, id) => (
-									<ProductTab key={id} product={product} />
+									<ProductTab key={id} {...product} />
 								))}
 							</ul>
 						) : (

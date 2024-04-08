@@ -13,10 +13,10 @@ import { SearchPage } from '~/pages/search';
 import { ProfilePage } from '~/pages/profile';
 import { CartPage } from '~/pages/cart';
 import { ProductPage } from '~/pages/product';
-import { AdminDashboardPage } from './pages/admin-dash';
-import { AdminProductsPage } from './pages/admin-products';
-import { AdminOrdersPage } from './pages/admin-orders';
-import { AdminCustomersPage } from './pages/admin-customers';
+import { AdminDashboardPage } from '~/pages/admin-dash';
+import { AdminProductsPage } from '~/pages/admin-products';
+import { AdminOrdersPage } from '~/pages/admin-orders';
+import { AdminCustomersPage } from '~/pages/admin-customers';
 
 const queryClient = new QueryClient();
 

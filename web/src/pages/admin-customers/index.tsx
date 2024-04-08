@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
+import { type FC } from 'react';
 
 import { getAdminCustomers } from '~/api';
 import { CustomerTab } from '~/components-admin/customer-tab';
 import { Layout } from '~/components-admin/layout';
 import { Spinner } from '~/components/spinner';
 
-export const AdminCustomersPage = () => {
+export const AdminCustomersPage: FC = () => {
 	const { data: customers } = useQuery({
 		queryKey: ['getAdminCustomers'],
 		queryFn: getAdminCustomers,
@@ -19,7 +20,7 @@ export const AdminCustomersPage = () => {
 						<div className='w-full flex justify-start'>
 							<div className='text-2xl font-medium'>Customers</div>
 						</div>
-						<div className='my-3 p-2 grid md:grid-cols-[1fr_1fr_1fr] sm:grid-cols-5 grid-cols-2 items-center justify-between'>
+						<div className='my-3 p-2 grid grid-cols-[1fr_1fr_1fr] items-center justify-between'>
 							<span>Customer Name</span>
 							<span>Customer Email</span>
 							<span>No. of Orders</span>
@@ -27,7 +28,7 @@ export const AdminCustomersPage = () => {
 						{customers ? (
 							<ul>
 								{customers?.map((customer, id) => (
-									<CustomerTab key={id} customer={customer} />
+									<CustomerTab key={id} {...customer} />
 								))}
 							</ul>
 						) : (

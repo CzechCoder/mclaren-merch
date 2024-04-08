@@ -22,3 +22,5 @@
 3.  **Start using the web**
 
     You can either use the frontend to shop or go to /admin to log in as admin
+
+    Please keep in mind that seed data has hardcoded timestamps. Selective dashboard functions relying on time - such as the current month revenue - might not show the data appropriately unless you adjust the seed data or make your own.

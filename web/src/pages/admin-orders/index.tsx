@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
+import { type FC } from 'react';
 
 import { getAdminOrders } from '~/api';
 import { Layout } from '~/components-admin/layout';
 import { OrderTab } from '~/components-admin/order-tab';
 import { Spinner } from '~/components/spinner';
 
-export const AdminOrdersPage = () => {
-	const { data: orders } = useQuery({
+export const AdminOrdersPage: FC = () => {
+	const { data: orders } = useQuery<Order[]>({
 		queryKey: ['getAdminOrders'],
 		queryFn: getAdminOrders,
 	});
@@ -19,19 +20,17 @@ export const AdminOrdersPage = () => {
 						<div className='w-full flex justify-start'>
 							<div className='text-2xl font-medium'>Orders</div>
 						</div>
-						<div className='my-3 p-2 grid md:grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr] sm:grid-cols-5 grid-cols-2 items-center justify-between'>
+						<div className='my-3 p-2 grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr] items-center justify-between'>
 							<span>Number</span>
 							<span>Date</span>
-							<span className='hidden md:grid'>Customer</span>
-							<span className='sm:text-left text-right'>Payment</span>
-							<span className='hidden md:grid'>Fulfillment status</span>
-							<span className='hidden md:grid'>Total</span>
+							<span className='grid'>Customer</span>
+							<span className='text-left'>Payment</span>
+							<span className='grid'>Fulfillment status</span>
+							<span className='grid'>Total</span>
 						</div>
 						{orders ? (
 							<ul>
-								{orders?.map((order, id) => (
-									<OrderTab key={id} order={order} />
-								))}
+								{orders?.map((order, id) => <OrderTab key={id} {...order} />)}
 							</ul>
 						) : (
 							<div>

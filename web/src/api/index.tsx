@@ -32,3 +32,8 @@ export const getAdminCustomers = async () => {
 	const { data } = await client.get('/api/admin/customers');
 	return data;
 };
+
+export const getDashboardStatistics = async () => {
+	const { data } = await client.get('/api/admin/statistics');
+	return data;
+};

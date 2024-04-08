@@ -86,6 +86,7 @@ interface Order {
 	email: string;
 	date: ColumnType<Date, string, string>;
 	shipped: ColumnType<Date, string, string>;
+	delivered: ColumnType<Date, string, string>;
 	status: 'pending' | 'shipped' | 'delivered' | 'returned';
 	tracking_number: string;
 }

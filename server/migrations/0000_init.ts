@@ -74,7 +74,8 @@ export async function up(db: Kysely<any>): Promise<void> {
 			col.defaultTo(sql`now()`).notNull(),
 		)
 		.addColumn('shipped', 'timestamptz')
-		.addColumn('status', 'text')
+		.addColumn('delivered', 'timestamptz')
+		.addColumn('status', 'text', (col) => col.defaultTo('pending').notNull())
 		.addColumn('tracking_number', 'text', (col) => col.notNull())
 		.execute();
 

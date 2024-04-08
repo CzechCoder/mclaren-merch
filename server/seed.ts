@@ -1,4 +1,4 @@
-import { db } from './src/db';
+import { db } from '~/db';
 
 async function createSeed() {
 	await db
@@ -299,6 +299,22 @@ async function createSeed() {
 				phone: '189100232',
 				shipping: 10,
 				email: 'tanya.h@gmail.com',
+				date: '2023-04-05 15:58:03.660485+02',
+				shipped: '2023-04-06 15:58:03.660485+02',
+				delivered: '2023-04-07 15:58:03.660485+02',
+				status: 'delivered',
+				tracking_number: '1A34R5',
+			},
+			{
+				user_id: BigInt(1),
+				name: 'Tanya B. Harding',
+				city: 'York',
+				street: 'Wells st. 131',
+				zip: '45 000',
+				country: 'UK',
+				phone: '189100232',
+				shipping: 10,
+				email: 'tanya.h@gmail.com',
 				date: '2024-04-05 15:58:03.660485+02',
 				status: 'pending',
 				tracking_number: '1A34R5',
@@ -315,7 +331,8 @@ async function createSeed() {
 				email: 'preston.k@gmail.com',
 				date: '2024-04-05 15:58:03.660485+02',
 				shipped: '2024-04-07 15:58:03.660485+02',
-				status: 'shipped',
+				delivered: '2024-04-08 15:58:03.660485+02',
+				status: 'delivered',
 				tracking_number: '2B84RS',
 			},
 			{
@@ -330,6 +347,7 @@ async function createSeed() {
 				email: 'preston.k@gmail.com',
 				date: '2024-04-05 15:58:03.660485+02',
 				shipped: '2024-04-07 15:58:03.660485+02',
+				delivered: '2024-04-08 15:58:03.660485+02',
 				status: 'returned',
 				tracking_number: 'OP4561',
 			},
@@ -347,28 +365,35 @@ async function createSeed() {
 				quantity: 2,
 			},
 			{
-				order_id: BigInt(1),
+				order_id: BigInt(2),
+				variant_id: BigInt(2),
+				name: 'Mens Performance Polo Shirt',
+				price: 90,
+				quantity: 2,
+			},
+			{
+				order_id: BigInt(2),
 				variant_id: BigInt(7),
 				name: 'Mens Born To Race T-Shirt',
 				price: 30,
 				quantity: 1,
 			},
 			{
-				order_id: BigInt(2),
+				order_id: BigInt(3),
 				variant_id: BigInt(10),
 				name: 'Womens Official Teamwear Polo Shirt Neom McLaren Extreme E',
 				price: 70,
 				quantity: 2,
 			},
 			{
-				order_id: BigInt(2),
+				order_id: BigInt(3),
 				variant_id: BigInt(14),
 				name: 'LEGO Speed Champions 2023 McLaren Formula 1 Race Car',
 				price: 40,
 				quantity: 1,
 			},
 			{
-				order_id: BigInt(3),
+				order_id: BigInt(4),
 				variant_id: BigInt(12),
 				name: 'Womens Core Essentials T-Shirt',
 				price: 50,
@@ -381,6 +406,11 @@ async function createSeed() {
 		.insertInto('payment')
 		.values([
 			{
+				order_id: BigInt(1),
+				status: 'paid',
+				date: '2023-04-05 16:35:09.860634+02',
+			},
+			{
 				order_id: BigInt(2),
 				status: 'paid',
 				date: '2024-04-08 16:34:09.860634+02',
@@ -391,12 +421,12 @@ async function createSeed() {
 				date: '2024-04-08 10:34:09.860634+02',
 			},
 			{
-				order_id: BigInt(3),
+				order_id: BigInt(4),
 				status: 'paid',
 				date: '2024-04-08 10:45:09.860634+02',
 			},
 			{
-				order_id: BigInt(3),
+				order_id: BigInt(4),
 				status: 'refunded',
 				date: '2024-04-08 11:34:09.860634+02',
 			},

@@ -1,7 +1,8 @@
 import { RECENT_ORDERS } from '~/recent-orders';
 import { FaShoppingBag } from 'react-icons/fa';
+import { type FC } from 'react';
 
-export const RecentOrders = () => {
+export const RecentOrders: FC = () => {
 	return (
 		<div className='w-full col-span-1 relative h-[70vh] p-4 border rounded-lg bg-white overflow-y-scroll'>
 			<h1>Recent Orders</h1>

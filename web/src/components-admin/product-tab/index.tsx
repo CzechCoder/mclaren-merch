@@ -1,8 +1,9 @@
 import { RxCrossCircled } from 'react-icons/rx';
 import { CiCircleCheck } from 'react-icons/ci';
+import { type FC } from 'react';
 import dayjs from 'dayjs';
 
-export const ProductTab = ({ product }: { product: ProductWithVariants }) => {
+export const ProductTab: FC<ProductWithVariants> = (product) => {
 	return (
 		<li className='bg-gray-100 hover:bg-gray-200 auto-cols-min rounded-lg my-3 p-2 grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] sm:grid-cols-5 grid-cols-2 items-center justify-between'>
 			<div className='flex items-center pr-5'>
