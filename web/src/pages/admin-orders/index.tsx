@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { getAdminOrders } from '~/api';
-import Layout from '~/components-admin/layout';
+import { Layout } from '~/components-admin/layout';
 import { OrderTab } from '~/components-admin/order-tab';
 
 export const AdminOrdersPage = () => {

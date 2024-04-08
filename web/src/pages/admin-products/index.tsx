@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { ProductTab } from '~/components-admin/product-tab';
 import { getAdminProductVariants } from '~/api';
-import Layout from '~/components-admin/layout';
+import { Layout } from '~/components-admin/layout';
 
 export const AdminProductsPage = () => {
 	const { data: products } = useQuery({

@@ -1,7 +1,12 @@
+import { type FC, type PropsWithChildren } from 'react';
 import { Header } from '~/components-admin/header';
 import { Sidebar } from '~/components-admin/sidebar';
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout: FC<PropsWithChildren> = ({
+	children,
+}: {
+	children: React.ReactNode;
+}) => {
 	return (
 		<div className='flex flex-row min-h-screen styled-scrollbar'>
 			<Sidebar />
@@ -14,5 +19,3 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 		</div>
 	);
 };
-
-export default Layout;

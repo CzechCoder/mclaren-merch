@@ -11,6 +11,7 @@ adminRouter.get('/products', async (req, res) => {
 		.selectFrom('product_variant')
 		.leftJoin('product', 'product.id', 'product_variant.product_id')
 		.select([
+			'product_variant.id',
 			'product_variant.product_id',
 			'product_variant.name as variant_name',
 			'product_variant.img',
@@ -21,6 +22,7 @@ adminRouter.get('/products', async (req, res) => {
 			'product.price',
 			'product.name',
 		])
+		.orderBy('product_variant.id asc')
 		.execute();
 	res.json(result);
 });
