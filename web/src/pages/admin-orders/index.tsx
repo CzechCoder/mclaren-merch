@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAdminOrders } from '~/api';
 import { Layout } from '~/components-admin/layout';
 import { OrderTab } from '~/components-admin/order-tab';
+import { Spinner } from '~/components/spinner';
 
 export const AdminOrdersPage = () => {
 	const { data: orders } = useQuery({
@@ -26,9 +27,17 @@ export const AdminOrdersPage = () => {
 							<span className='hidden md:grid'>Fulfillment status</span>
 							<span className='hidden md:grid'>Total</span>
 						</div>
-						<ul>
-							{orders?.map((order, id) => <OrderTab key={id} order={order} />)}
-						</ul>
+						{orders ? (
+							<ul>
+								{orders?.map((order, id) => (
+									<OrderTab key={id} order={order} />
+								))}
+							</ul>
+						) : (
+							<div>
+								<Spinner />
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

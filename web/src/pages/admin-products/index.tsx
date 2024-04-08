@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { ProductTab } from '~/components-admin/product-tab';
 import { getAdminProductVariants } from '~/api';
+import { ProductTab } from '~/components-admin/product-tab';
 import { Layout } from '~/components-admin/layout';
+import { Spinner } from '~/components/spinner';
 
 export const AdminProductsPage = () => {
 	const { data: products } = useQuery({
@@ -26,11 +27,17 @@ export const AdminProductsPage = () => {
 							<span className='hidden md:grid'>Available</span>
 							<span className='hidden md:grid'>Last updated</span>
 						</div>
-						<ul>
-							{products?.map((product, id) => (
-								<ProductTab key={id} product={product} />
-							))}
-						</ul>
+						{products ? (
+							<ul>
+								{products?.map((product, id) => (
+									<ProductTab key={id} product={product} />
+								))}
+							</ul>
+						) : (
+							<div>
+								<Spinner />
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

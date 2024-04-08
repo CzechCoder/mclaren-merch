@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAdminCustomers } from '~/api';
 import { CustomerTab } from '~/components-admin/customer-tab';
 import { Layout } from '~/components-admin/layout';
+import { Spinner } from '~/components/spinner';
 
 export const AdminCustomersPage = () => {
 	const { data: customers } = useQuery({
@@ -23,11 +24,17 @@ export const AdminCustomersPage = () => {
 							<span>Customer Email</span>
 							<span>No. of Orders</span>
 						</div>
-						<ul>
-							{customers?.map((customer, id) => (
-								<CustomerTab key={id} customer={customer} />
-							))}
-						</ul>
+						{customers ? (
+							<ul>
+								{customers?.map((customer, id) => (
+									<CustomerTab key={id} customer={customer} />
+								))}
+							</ul>
+						) : (
+							<div>
+								<Spinner />
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

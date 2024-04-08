@@ -1,5 +1,4 @@
 import { RxCrossCircled } from 'react-icons/rx';
-import { MdDeleteOutline } from 'react-icons/md';
 import { CiCircleCheck } from 'react-icons/ci';
 import dayjs from 'dayjs';
 

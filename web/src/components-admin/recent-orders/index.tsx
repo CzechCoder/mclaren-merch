@@ -3,7 +3,7 @@ import { FaShoppingBag } from 'react-icons/fa';
 
 export const RecentOrders = () => {
 	return (
-		<div className='w-full col-span-1 relative h-[70vh] p-4 border rounded-lg bg-white overflow-scroll'>
+		<div className='w-full col-span-1 relative h-[70vh] p-4 border rounded-lg bg-white overflow-y-scroll'>
 			<h1>Recent Orders</h1>
 			<ul>
 				{RECENT_ORDERS.map((order, id) => (
@@ -18,9 +18,7 @@ export const RecentOrders = () => {
 							<p className='text-gray-800 font-bold'>${order.total}</p>
 							<p className='text-gray-400 text-sm'>{order.name.first}</p>
 						</div>
-						<p className='lg:flex md:hidden absolute right-6 text-sm'>
-							{order.date}
-						</p>
+						<p className='flex absolute right-6 text-sm'>{order.date}</p>
 					</li>
 				))}
 			</ul>

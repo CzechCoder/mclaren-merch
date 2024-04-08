@@ -1,13 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { type FC } from 'react';
 
+import { getProductsThumbnails } from '~/api';
 import {
 	HomePageProductCard,
 	CategoryProductCard,
 } from '~/components/product-card';
-import { type Product } from '~/types/product';
 import { Spinner } from '~/components/spinner';
-import { getProductsThumbnails } from '~/api';
 
 interface RowProps {
 	title: string;

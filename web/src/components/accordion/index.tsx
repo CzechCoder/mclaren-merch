@@ -1,8 +1,9 @@
 import { Accordion } from '@szhsin/react-accordion';
-import { AccordionItem } from '~/components/accordion-item';
 import { FaFacebook, FaPinterest } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { type FC } from 'react';
+
+import { AccordionItem } from '~/components/accordion-item';
 
 export const ProductAccordion: FC<{ details: string }> = ({ details }) => (
 	<Accordion transition transitionTimeout={200} className='border-t-[1px]'>
